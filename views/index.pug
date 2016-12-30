@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	navbar(brand= title)
+		li.nav-item
+	content-page-header
+		jumbotron(title=jumbotron.title)= jumbotron.content
+		.content
+			div.list-group
+				each board in boards
+					a.list-group-item(href = '/' + board.name)= board.name

@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	navbar(brand=setting.title)
+		li.nav-item
+	content-page-header
+		jumbotron
+			.text-center
+				img(src=setting.title_picture)
+			span
+				|!{ setting.localrule }
