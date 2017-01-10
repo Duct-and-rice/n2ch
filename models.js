@@ -3,8 +3,13 @@ var conf = require('config');
 var Board = require('./models/board');
 var Thread = require('./models/thread');
 var Res = require('./models/res');
-const port = conf.dbport;
-const name = conf.dbname;
+var port = conf.dbport;
+var name = conf.dbname;
+
+if (process.env.PORT == 3001) {
+	port = 3002;
+}
+console.log(port);
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;

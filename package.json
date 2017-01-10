@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node-dev --no-notify ./bin/www",
+    "start2": "PORT=3001 node-dev --no-notify ./bin/www",
     "debug": "node-dev --debug --no-notify ./bin/www",
     "build": "babel src -d build"
   },
@@ -12,7 +13,9 @@
     "config": "^1.24.0",
     "cookie-parser": "~1.4.3",
     "css-loader": "^0.26.1",
+    "dateformat": "^2.0.0",
     "debug": "~2.2.0",
+    "eventsource": "^0.2.1",
     "express": "~4.14.0",
     "jconv": "^0.1.5",
     "materialize-css": "^0.97.8",
@@ -22,6 +25,7 @@
     "pug": "^2.0.0-beta6",
     "riot": "^3.0.5",
     "serve-favicon": "~2.3.0",
+    "sha3": "^1.2.0",
     "sprintf-js": "^1.0.3",
     "underscore": "^1.8.3",
     "underscore.string": "^3.3.4",

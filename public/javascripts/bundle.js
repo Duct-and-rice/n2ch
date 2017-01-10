@@ -12937,6 +12937,15 @@
 	});
 	riot.tag2('content-page-header', '<div class="container"> <div class="page-header"> <yield></yield> </div> </div>', '', '', function(opts) {
 	});
+	riot.tag2('content-page', '<div class="container"> <div class="page"> <yield></yield> </div> </div>', '', '', function(opts) {
+	});
+	riot.tag2('res', '<div> <div>{opts.num}:{opts.from} [{opts.mail}] {opts.date} ID:{opts.id}</div> <div class="res">{opts.content}</div> <hr> </div>', 'res .res,[riot-tag="res"] .res,[data-is="res"] .res{ margin-left:10px; }', '', function(opts) {
+	});
+	riot.tag2('bbs-form', '<div class="container"> <form class="form-horizonal" method="POST" action="/test/bbs.cgi" accept-charset="Shift_JIS"> <input type="hidden" name="bbs" value="{opts.bbs}"> <input type="hidden" name="key" value="{opts.key}" if="{opts.newthread!==&quot;true&quot;}"> <div class="form-group" if="{opts.newthread===&quot;true&quot;}"> <label class="control-label col-sm-2">タイトル:</label> <div class="col-sm-10"> <input class="form-control" type="text" name="subject"> </div> </div> <div class="form-group"> <label class="control-label col-sm-2">名前:</label> <div class="col-sm-10"> <input class="form-control" type="text" name="FROM"> </div> </div> <div class="form-group"> <label class="control-label col-sm-2">E-mail:</label> <div class="col-sm-10"> <input class="form-control" type="text" name="mail"> </div> </div> <div class="form-group"> <textarea class="form-control" name="MESSAGE"></textarea> <button class="btn" type="submit">書き込む</button> </div> </form> </div>', 'bbs-form .col-sm-10,[riot-tag="bbs-form"] .col-sm-10,[data-is="bbs-form"] .col-sm-10{ padding-bottom:10px; }', '', function(opts) {
+	    var is_newthread=opts.newthread==='true'
+	    var is_threadpost=opts.newthread!=='true'
+	
+	});
 
 /***/ },
 /* 4 */

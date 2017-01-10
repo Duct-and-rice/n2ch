@@ -1,11 +1,30 @@
 extends layout
 
 block content
+	title= setting.title
 	navbar(brand=setting.title)
 		li.nav-item
 	content-page-header
 		jumbotron
 			.text-center
-				img(src=setting.title_picture)
+				img.img-responsive(src=setting.title_picture)
 			span
 				|!{ setting.localrule }
+		.container
+			table.table.table-striped.row
+				thead
+					tr
+						th.col-md-1 No
+						th Title
+						th.col-md-1.text-right Length
+				tbody
+					each thread,index in threads
+						tr
+							td= index + 1
+							td
+								a(href='/test/read.cgi/' + thread.board + '/' + thread.key).text-color= thread.title
+							td.text-right
+								.badge= thread.content.length
+	
+	content-page
+		bbs-form(bbs=boardname, newthread='true')

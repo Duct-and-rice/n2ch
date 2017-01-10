@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	title= thread.title
+	navbar(brand=setting.title)
+		li.nav-item
+	content-page-header
+		h2= thread.title
+	
+	content-page
+		each r,index in res
+			res(num=index+1, from=r.name, mail=r.mail, date=r.date, id=r.id, content=r.content)
+		bbs-form(bbs='board',key=thread.key)
+

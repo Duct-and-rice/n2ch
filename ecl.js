@@ -1,3 +1,4 @@
+
 //
 // Escape Codec Library: ecl.js (Ver.041208)
 //

@@ -11,7 +11,18 @@
 		"board":{
 			"title":"テスト掲示板@n2ch掲示板",
 			"localrule":"<h3>ローカルルール</h3><br>ここにローカルルールが書けます。",
-			"title_picture":"http://www2.2ch.net/2ch.gif"
+			"title_picture":"/images/logo.png",
+			"anonymous_name":"名無し",
+			"sync":["http://localhost:3001/"],
+			"bbs_finish_num":1000
+		},
+		"kind":{
+			"title":"テスト掲示板@n2ch掲示板",
+			"localrule":"<h3>ローカルルール</h3><br>ここにローカルルールが書けます。",
+			"title_picture":"http://www2.2ch.net/2ch.gif",
+			"anonymous_name":"名無し",
+			"sync":["http://localhost:3001/"],
+			"bbs_finish_num":1000
 		}
 	}
 }

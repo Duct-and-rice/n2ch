@@ -6,19 +6,24 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var config = require('config');
-const port = config.port;
-
+if (process.env.PORT == 3001) {
+	const port = config.port;
+}
 var index = require('./routes/index');
 var test = require('./routes/test');
 var board = require('./routes/board');
 var subjects = require('./routes/subjects');
+var admin = require('./routes/admin');
 
 var Board = require('./models/board');
+var Event = require('./models/event');
 
 var mongoose = require('./models.js');
+var sync = require('./sync');
 
 var app = express();
 
+var events = [];
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,6 +40,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+// 工事中
+//app.use('/admin', admin);
 app.use('/test', test);
 for (let n of config.boardname) {
 	app.use('/' + n, board);

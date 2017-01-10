@@ -4,6 +4,7 @@ var router = express.Router();
 var jconv = require('jconv');
 var sprintf = require("sprintf-js").sprintf,
 	vsprintf = require("sprintf-js").vsprintf
+var dateFormat = require('dateformat');
 
 var _ = require('underscore');
 _.str = require('underscore.string');
@@ -13,7 +14,6 @@ _.str.include('Underscore.string', 'string');
 var Board = require('../models/board');
 var Thread = require('../models/thread');
 var Res = require('../models/res');
-
 
 //名前<>メール欄<>日付、ID<>本文<>スレタイトル(1行目のみ存在する)\n
 router.get('/:dat', (req, res, next) => {
@@ -32,6 +32,7 @@ router.get('/:dat', (req, res, next) => {
 		console.log('dat', key, thread);
 
 		if (thread == null) {
+			console.log('n');
 			res.status(404).end();
 			return 0;
 		}
@@ -50,8 +51,11 @@ router.get('/:dat', (req, res, next) => {
 		console.log(threads);
 		for (let i = 0; i < threads.length; i++) {
 			let r = threads[i],
-				c = r.content.split('\n').join('<br>');
-			str += sprintf('%s<>%s<>%s ID:%s<> %s <>', r.name, r.mail, r.date, r.id, c);
+				c = r.content.split('\n').join('<br>'),
+				week = '日月火水木金土',
+				dayOfWeek = week.charAt(dateFormat(r.date, 'N')),
+				dateFormatted = dateFormat(r.date, 'yyyy/mm/dd(') + dayOfWeek + dateFormat(r.date, ') hh:MM:ss L');
+			str += sprintf('%s<>%s<>%s ID:%s<> %s <>', r.name, r.mail, dateFormatted, r.id, c);
 			str += '\n';
 		}
 		console.log(str);
