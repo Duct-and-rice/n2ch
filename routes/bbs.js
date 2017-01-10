@@ -61,7 +61,10 @@ router.post('/', function(req, res, next) {
 		});
 		res.end();
 	};
-	//now = 0;
+	console.log('ip:', req.ip);
+	sha512.update(req.ip + '/' + boardname + '/' + date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate(), 'UTF-8');
+	nid = sha512.digest('base64').slice(0, 8);
+	sha512 = crypto.createHash('sha512')
 
 	res.header('Content-Type', 'text/html; charset=shift_jis');
 	let r;
@@ -84,7 +87,7 @@ router.post('/', function(req, res, next) {
 			};
 			sha512.update(JSON.stringify(json), 'UTF-8');
 			console.log(events);
-			eid = sha512.digest('hex');
+			eid = sha512.digest('base64');
 			events.push(eid);
 			data = JSON.stringify({
 				event: 'new_thread',
@@ -105,13 +108,13 @@ router.post('/', function(req, res, next) {
 			id: nid
 		}).then((r) => {
 			json = {
-					boardname: boardname,
-					thread: r.key,
-					res: r.res
-				};
+				boardname: boardname,
+				thread: r.key,
+				res: r.res
+			};
 			let str = JSON.stringify(json);
 			sha512.update(str, 'UTF-8');
-			let eid = sha512.digest('hex');
+			let eid = sha512.digest('base64');
 			data = JSON.stringify({
 				event: 'new_res',
 				data: json,
