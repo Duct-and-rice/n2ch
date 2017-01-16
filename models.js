@@ -6,9 +6,9 @@ var Res = require('./models/res');
 var port = conf.dbport;
 var name = conf.dbname;
 
-if (process.env.PORT == 3001) {
-	port = 3002;
-}
+// if (process.env.PORT == 3001) {
+// 	port = 3002;
+// }
 console.log(port);
 
 var mongoose = require('mongoose');

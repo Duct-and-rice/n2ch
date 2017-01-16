@@ -6,9 +6,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var config = require('config');
-if (process.env.PORT == 3001) {
-	const port = config.port;
-}
+// if (process.env.PORT == 3001) {
+// 	const port = config.port;
+// }
 var index = require('./routes/index');
 var test = require('./routes/test');
 var board = require('./routes/board');
