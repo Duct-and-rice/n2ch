@@ -50,7 +50,7 @@ router.get('/', (req, res, next) => {
 		}
 		for (let i = 0; i < subjects.length; i++) {
 			if (subjects[i] != undefined) {
-				str = sprintf('%010d.dat<>%s\t(%d)\n', subjects[i].key, subjects[i].title, subjects[i].content.length);
+				str = sprintf('%010d.dat<>%s (%d)\n', subjects[i].key, subjects[i].title, subjects[i].content.length);
 			}
 			res.write(jconv.encode(str, 'Shift_JIS'));
 		}
